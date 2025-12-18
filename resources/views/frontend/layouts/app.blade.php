@@ -14,24 +14,28 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="min-h-screen flex flex-col" style="background-color: #0f0f23;">
+<body class="min-h-screen flex flex-col overflow-x-hidden" style="background-color: #0f0f23;">
     <!-- Navigation -->
     <nav class="glass-dark fixed top-0 left-0 right-0 z-50" x-data="{ open: false }">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
+            <div class="flex items-center justify-between h-16 sm:h-20">
                 <!-- Logo -->
-                <a href="{{ route('home') }}" class="flex items-center gap-3">
+                <a href="{{ route('home') }}" class="flex items-center gap-2 sm:gap-3 min-w-0 flex-shrink">
                     @if($settings->logo_url ?? false)
-                        <img src="{{ $settings->logo_url }}" alt="{{ $settings->company_name }}" class="h-10">
+                        <img src="{{ $settings->logo_url }}" alt="{{ $settings->company_name }}"
+                            class="h-8 sm:h-10 flex-shrink-0">
                     @else
-                        <div class="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div
+                            class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl gradient-primary flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M13 10V3L4 14h7v7l9-11h-7z" />
                             </svg>
                         </div>
                     @endif
-                    <span class="text-white font-bold text-xl">{{ $settings->company_name ?? 'Company' }}</span>
+                    <span
+                        class="text-white font-bold text-lg sm:text-xl truncate">{{ $settings->company_name ?? 'Company' }}</span>
                 </a>
 
                 <!-- Desktop Navigation -->
@@ -52,7 +56,7 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button @click="open = !open" class="md:hidden p-2 text-white">
+                <button @click="open = !open" class="md:hidden p-2 text-white flex-shrink-0">
                     <svg x-show="!open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16" />
@@ -85,7 +89,7 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="flex-1 pt-20">
+    <main class="flex-1 pt-16 sm:pt-20">
         @yield('content')
     </main>
 
@@ -206,6 +210,11 @@
             </div>
         </div>
     </footer>
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
 </body>
 
 </html>

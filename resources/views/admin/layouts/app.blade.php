@@ -87,9 +87,16 @@
 </head>
 
 <body class="min-h-screen" style="background-color: #0f0f23;">
-    <div class="flex min-h-screen" x-data="{ sidebarOpen: true }">
+    <div class="flex min-h-screen" x-data="{ sidebarOpen: false }">
+
+        <!-- Mobile Sidebar Overlay -->
+        <div x-show="sidebarOpen" @click="sidebarOpen = false" class="fixed inset-0 bg-black/50 z-40 lg:hidden" x-cloak>
+        </div>
+
         <!-- Sidebar -->
-        <aside class="admin-sidebar w-64 flex-shrink-0 hidden lg:block" :class="{ 'lg:block': sidebarOpen }">
+        <aside
+            class="admin-sidebar w-64 flex-shrink-0 fixed lg:static inset-y-0 left-0 z-50 transform transition-transform duration-200 lg:translate-x-0"
+            :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'" x-cloak>
             <div class="h-full flex flex-col">
                 <!-- Logo -->
                 <div class="p-6 border-b border-white/10">
@@ -212,11 +219,18 @@
         <!-- Main Content -->
         <main class="flex-1 overflow-x-hidden">
             <!-- Top Bar -->
-            <header class="glass-dark sticky top-0 z-10 px-6 py-4">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h1 class="text-xl font-semibold text-white">@yield('title', 'Dashboard')</h1>
-                        <p class="text-white/50 text-sm">@yield('subtitle', '')</p>
+            <header class="glass-dark sticky top-0 z-10 px-4 lg:px-6 py-4">
+                <div class="flex items-center justify-between gap-4">
+                    <!-- Mobile Menu Button -->
+                    <button @click="sidebarOpen = true" class="lg:hidden p-2 -ml-2 text-white/70 hover:text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                    <div class="flex-1 min-w-0">
+                        <h1 class="text-xl font-semibold text-white truncate">@yield('title', 'Dashboard')</h1>
+                        <p class="text-white/50 text-sm hidden sm:block">@yield('subtitle', '')</p>
                     </div>
                     <div class="flex items-center gap-4">
                         <a href="{{ route('home') }}" target="_blank"
@@ -254,6 +268,11 @@
             </div>
         </main>
     </div>
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
 </body>
 
 </html>

@@ -33,7 +33,7 @@ A modern, full-featured company profile website template built with Laravel 12. 
 
 | Technology | Purpose |
 |------------|---------|
-| Laravel 11 | Backend Framework |
+| Laravel 12 | Backend Framework |
 | Blade | Templating Engine |
 | Tailwind CSS | Styling |
 | Alpine.js | JavaScript Interactivity |
@@ -156,13 +156,15 @@ All content is managed through the admin panel - no code changes needed!
 2. Add a route in `routes/web.php`
 3. Create the Blade view in `resources/views/frontend/`
 
-## 📸 Feature
+## 📸 Screenshots
 
 ### Frontend Homepage
-The public-facing website with hero, services, about, portfolio, and testimonials sections.
+![Frontend Homepage](screenshots/homepage.png)
+*The public-facing website with hero, services, about, portfolio, and testimonials sections.*
 
 ### Admin Dashboard
-Clean dashboard showing stats and quick actions for managing content.
+![Admin Dashboard](screenshots/admin-dashboard.png)
+*Clean dashboard showing stats and quick actions for managing content.*
 
 ### Content Management
 Easy-to-use forms for managing all website content including images.
