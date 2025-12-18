@@ -53,8 +53,7 @@ A modern, full-featured company profile website template built with Laravel 12. 
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/laravel-company-profile.git
-   cd laravel-company-profile
+   git clone https://github.com/jeeexcalibur/company-profile-template.git
    ```
 
 2. **Install dependencies**
